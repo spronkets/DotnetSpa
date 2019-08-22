@@ -35,7 +35,7 @@ export default class Orders extends Vue {
   get customer(): CustomerModel {
     return this.$store.state.selectedCustomer;
   }
-  
+
   get orders(): OrderModel[] {
     return this.$store.state.selectedCustomerOrders;
   }

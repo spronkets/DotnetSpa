@@ -35,19 +35,28 @@ export class DashboardComponent implements OnInit {
 
   private refreshCustomers(): void {
     this.loadingCustomers = true;
-    this.customersService.getCustomers().subscribe((customers: Customer[]) => {
-      this.customers = customers;
-      this.loadingCustomers = false;
-    });
+    this.customersService.getCustomers().subscribe(
+      (customers: Customer[]) => {
+        this.customers = customers;
+        this.loadingCustomers = false;
+      },
+      (error: any) => {
+        this.customers = [];
+        this.loadingCustomers = false;
+      });
   }
 
   private refreshCustomerOrders(customerId: number): void {
     this.loadingCustomerOrders = true;
     this.customerOrdersService
-      .getCustomerOrders(customerId)
-      .subscribe((customers: Customer[]) => {
-        this.customerOrders = customers;
-        this.loadingCustomerOrders = false;
-      });
+      .getCustomerOrders(customerId).subscribe(
+        (customers: Customer[]) => {
+          this.customerOrders = customers;
+          this.loadingCustomerOrders = false;
+        },
+        (error: any) => {
+          this.customers = [];
+          this.loadingCustomers = false;
+        });
   }
 }

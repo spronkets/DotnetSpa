@@ -26,7 +26,7 @@ import CustomerModel from "@/models/customer";
 @Component
 export default class Customers extends Vue {
   loading: boolean = false;
-  
+
   mounted(): void {
     if(!this.hasCustomers){
       this.refreshCustomers();

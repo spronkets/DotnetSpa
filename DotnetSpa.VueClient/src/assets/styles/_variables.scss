@@ -1,17 +1,19 @@
 // Standard Colors
-$lightColor: #F5F5F5;
-$darkColor: #36454f;
 $highlighterColor: lighten(yellow, 30);
 
 // Theme Colors
-$primaryColor: $darkColor;
-$secondaryColor: lighten($darkColor, 20%);
-$tertiaryColor: #7395AE;
-$quaternaryColor: #557A95;
-$quinaryColor: $lightColor;
+$primaryColor: #343A40;
+$secondaryColor: #212529;
+$tertiaryColor: #F8F9FA;
+$quaternaryColor: #0090DF;
+$quinaryColor: #AAAAAA;
+
+$lightFontColor: white;
+$darkFontColor: #212529;
+$mutedFontColor: #343A40;
 
 // Font Sizes
-$bodyFontSize: 14px;
+$fontSize: 14px;
 $headerFontSize: 16px;
 $siteNameFontSize: 18px;
 $footerFontSize: 12px;

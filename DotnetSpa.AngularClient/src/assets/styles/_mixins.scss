@@ -1,0 +1,28 @@
+@import './variables';
+
+@mixin center() {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin center-horizontally() {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+@mixin center-vertically() {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+@mixin dynamic-font-color($color) {
+  @if (lightness($color) > 50) {
+    color: $darkFontColor;
+  } @else {
+    color: $lightFontColor;
+  }
+}
