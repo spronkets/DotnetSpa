@@ -1,4 +1,4 @@
-# DotnetSpa - Vue Client
+# DotnetSpa - Angular Client
 
 ## Prerequisites
 1) Install Node/NPM - https://nodejs.org/en/download/
@@ -7,8 +7,9 @@
 ## Development
 1) Restore Dependencies
 `npm install`
+`npm i`
 2) Compile and Serve
-`npm run serve`
+`ng serve`
 
 ## Deployment
 ```

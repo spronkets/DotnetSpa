@@ -4,8 +4,8 @@ EXPOSE 8080
 
 COPY "DotnetSpa.VueClient/package*.json" ./
 
-RUN npm run restore
+RUN npm run build
 
 COPY "DotnetSpa.VueClient/" .
 
-CMD npm run start:docker
+#CMD npm run start:docker
