@@ -1,0 +1,14 @@
+<p *ngIf="loadingCustomers; else customersLoaded">
+    Getting Customers...
+</p>
+<ng-template #customersLoaded>
+    <customer-list [customers]="customers" (selected)="customerSelected($event)"></customer-list>
+    <ng-template [ngIf]="shouldShowCustomerOrders">
+        <p *ngIf="loadingCustomerOrders; else customerOrdersLoaded">
+            Getting Orders for Customer...
+        </p>
+        <ng-template #customerOrdersLoaded>
+            <order-list [orders]="customerOrders"></order-list>
+        </ng-template>
+    </ng-template>
+</ng-template>

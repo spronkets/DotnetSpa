@@ -1,0 +1,18 @@
+<table *ngIf="customers && customers.length > 0; else noCustomers">
+    <caption>Customers</caption>
+    <tr class="table-header">
+        <td>Id</td>
+        <td>First Name</td>
+        <td>Last Name</td>
+    </tr>
+    <tr *ngFor="let customer of customers" (click)="selectCustomer(customer)"
+        [class.selected]="isCustomerSelected(customer.id)">
+        <td>{{customer.id}}</td>
+        <td>{{customer.firstName}}</td>
+        <td>{{customer.lastName}}</td>
+    </tr>
+</table>
+
+<ng-template #noCustomers>
+    <p>No Customers found.</p>
+</ng-template>

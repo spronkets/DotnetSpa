@@ -1,0 +1,17 @@
+// Standard Colors
+$lightColor: #F5F5F5;
+$darkColor: #36454f;
+$highlighterColor: lighten(yellow, 30);
+
+// Theme Colors
+$primaryColor: $darkColor;
+$secondaryColor: lighten($darkColor, 20%);
+$tertiaryColor: #7395AE;
+$quaternaryColor: #557A95;
+$quinaryColor: $lightColor;
+
+// Font Sizes
+$bodyFontSize: 14px;
+$headerFontSize: 16px;
+$siteNameFontSize: 18px;
+$footerFontSize: 12px;

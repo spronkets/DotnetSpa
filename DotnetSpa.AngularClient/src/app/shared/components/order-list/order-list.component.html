@@ -1,0 +1,15 @@
+<table *ngIf="orders && orders.length > 0; else noOrders">
+    <caption>Orders</caption>
+    <tr class="table-header">
+        <td>Id</td>
+        <td>Total Price</td>
+    </tr>
+    <tr *ngFor="let order of orders">
+        <td>{{order.id}}</td>
+        <td>{{order.totalPrice}}</td>
+    </tr>
+</table>
+
+<ng-template #noOrders>
+    <p>No Orders found.</p>
+</ng-template>

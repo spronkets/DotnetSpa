@@ -1,0 +1,79 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29209.62
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{58A356BC-4D56-4891-8D6A-48DD25438B66}"
+	ProjectSection(SolutionItems) = preProject
+		.dockerignore = .dockerignore
+		.editorconfig = .editorconfig
+		.gitignore = .gitignore
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotnetSpa.WebApi", "DotnetSpa.WebApi\DotnetSpa.WebApi.csproj", "{FE04333B-BC2B-457F-92A3-2C96D07D880D}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "DotnetSpa.AngularClient", "DotnetSpa.AngularClient\", "{F5B2E76F-34EB-46DB-B8A6-540B495FEB2C}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_3542"
+		Debug.AspNetCompiler.PhysicalPath = "DotnetSpa.AngularClient\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_3542\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_3542"
+		Release.AspNetCompiler.PhysicalPath = "DotnetSpa.AngularClient\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_3542\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "3542"
+		SlnRelativePath = "DotnetSpa.AngularClient\"
+	EndProjectSection
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "DotnetSpa.VueClient", "DotnetSpa.VueClient\", "{3721DE01-F1AF-4065-BB99-67973CCAB49C}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_3038"
+		Debug.AspNetCompiler.PhysicalPath = "DotnetSpa.VueClient\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_3038\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_3038"
+		Release.AspNetCompiler.PhysicalPath = "DotnetSpa.VueClient\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_3038\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "3038"
+		SlnRelativePath = "DotnetSpa.VueClient\"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FE04333B-BC2B-457F-92A3-2C96D07D880D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE04333B-BC2B-457F-92A3-2C96D07D880D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5B2E76F-34EB-46DB-B8A6-540B495FEB2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5B2E76F-34EB-46DB-B8A6-540B495FEB2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5B2E76F-34EB-46DB-B8A6-540B495FEB2C}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5B2E76F-34EB-46DB-B8A6-540B495FEB2C}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{3721DE01-F1AF-4065-BB99-67973CCAB49C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3721DE01-F1AF-4065-BB99-67973CCAB49C}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7D9F0FF7-B46F-469F-890D-9998F5C422B4}
+	EndGlobalSection
+EndGlobal

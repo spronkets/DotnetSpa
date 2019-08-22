@@ -1,0 +1,118 @@
+<template>
+  <div id="app">
+    <header>
+      <router-link to="/" class="site-name">DotnetSpa</router-link>
+    </header>
+
+    <nav>
+      <ul>
+        <li>
+          <router-link to="/dashboard">Dashboard</router-link>
+        </li>
+      </ul>
+    </nav>
+
+    <main>
+      <router-view />
+    </main>
+
+    <footer>
+        <span>Vue Client by Kody Crossman</span>
+      </footer>
+  </div>
+</template>
+
+<style lang="scss">
+@import "./assets/styles/variables";
+@import "./assets/styles/mixins";
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    font-size: $bodyFontSize;
+    margin: 0;
+    padding: 0;
+}
+
+#app {
+    display: grid;
+
+    grid-template-areas:
+        "header header"
+        "nav main"
+        "nav footer";
+
+    grid-template-columns: 8rem 1fr;
+    grid-template-rows: auto 1fr auto;
+
+    height: 100vh;
+}
+
+header {
+    grid-area: header;
+    height: 4rem;
+    padding: 0 2rem;
+    font-size: $headerFontSize;
+    background-color: $primaryColor;
+    color: $quinaryColor;
+
+    a {
+        display: inline-block;
+        text-decoration: none;
+        color: $quinaryColor;
+
+        &.site-name {
+            font-size: $siteNameFontSize;
+        }
+    }
+}
+
+nav {
+    grid-area: nav;
+    padding: 1rem 2rem;
+    font-size: $footerFontSize;
+    background-color: $secondaryColor;
+    color: $quinaryColor;
+
+    a {
+        text-decoration: none;
+        color: $quinaryColor;
+    }
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+main {
+    grid-area: main;
+    padding: 1rem 2rem;
+
+    table {
+      width: 100%;
+
+      caption {
+        font-size: 16px;
+        font-weight: 700;
+      }
+
+      tr.table-header {
+        td {
+          font-size: 14px;
+          font-weight: 600;
+        }
+      }
+    }
+}
+
+footer {
+    grid-area: footer;
+    padding: 1rem;
+    font-size: $footerFontSize;
+    text-align: right;
+    color: $tertiaryColor;
+}
+</style>

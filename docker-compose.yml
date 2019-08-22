@@ -1,0 +1,50 @@
+version: '3.7'
+services:
+  webapi:
+    container_name: dotnetspa-webapi
+    restart: always
+    build:
+      context: .
+      dockerfile: DotnetSpa.WebApi/Dockerfile
+    image: kcrossman/dotnetspa-webapi
+    networks:
+      dotnetspa:
+        ipv4_address: 172.42.2.1
+    ports:
+      - '5000:8080'
+      - '5001:443'
+  angularclient:
+    container_name: dotnetspa-angularclient
+    restart: always
+    depends_on:
+      - webapi
+    build:
+      context: .
+      dockerfile: DotnetSpa.AngularClient/Dockerfile
+    image: kcrossman/dotnetspa-angularclient
+    networks:
+      dotnetspa:
+        ipv4_address: 172.42.1.2
+    ports:
+      - '4200:4200'
+  vueclient:
+    container_name: dotnetspa-vueclient
+    restart: always
+    depends_on:
+      - webapi
+    build:
+      context: .
+      dockerfile: DotnetSpa.VueClient/Dockerfile
+    image: kcrossman/dotnetspa-vueclient
+    networks:
+      dotnetspa:
+        ipv4_address: 172.42.1.3
+    ports:
+      - '8080:8081'
+networks:
+  dotnetspa:
+    name: dotnetspa
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.42.0.0/16
