@@ -25,7 +25,7 @@
 </template>
 
 <style lang="scss">
-@import "./assets/styles/common";
+@import './assets/styles/common';
 
 $navWidth: 14rem;
 
@@ -122,6 +122,7 @@ main {
 
     table {
       width: 100%;
+      border-collapse: collapse;
 
       tr.table-header {
         td {

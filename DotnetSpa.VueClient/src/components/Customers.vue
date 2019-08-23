@@ -19,9 +19,8 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import store from "@/store";
-import CustomerModel from "@/models/customer";
+import { Component, Vue } from 'vue-property-decorator';
+import CustomerModel from '@/models/customer';
 
 @Component
 export default class Customers extends Vue {
@@ -63,7 +62,7 @@ export default class Customers extends Vue {
 </script>
 
 <style lang="scss" scoped>
-  @import "../assets/styles/variables";
+  @import '../assets/styles/variables';
 
   tr {
     cursor: pointer;

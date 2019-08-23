@@ -1,4 +1,4 @@
-@import "src/assets/styles/common";
+@import 'src/assets/styles/common';
 
 $navWidth: 14rem;
 
@@ -95,6 +95,7 @@ main {
 
   table {
     width: 100%;
+    border-collapse: collapse;
 
     tr.table-header {
       td {

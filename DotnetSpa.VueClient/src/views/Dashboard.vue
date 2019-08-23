@@ -6,9 +6,9 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import Customers from "@/components/Customers.vue";
-import CustomerOrders from "@/components/CustomerOrders.vue";
+import { Component, Vue } from 'vue-property-decorator';
+import Customers from '@/components/Customers.vue';
+import CustomerOrders from '@/components/CustomerOrders.vue';
 
 @Component({
   components: {

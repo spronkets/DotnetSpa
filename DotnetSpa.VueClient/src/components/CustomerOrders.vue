@@ -17,9 +17,8 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop } from "vue-property-decorator";
-import store from "@/store";
-import OrderModel from "@/models/order";
+import { Component, Vue } from 'vue-property-decorator';
+import OrderModel from '@/models/order';
 import CustomerModel from '@/models/customer';
 
 @Component
