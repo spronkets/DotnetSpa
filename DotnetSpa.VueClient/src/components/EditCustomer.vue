@@ -64,6 +64,11 @@
       this.hide();
     }
 
+    deleteCustomer(): void {
+      this.$store.commit('deleteCustomer', this.formCustomer.id)
+      this.hide();
+    }
+
     private resetCustomer(): void {
       this.formCustomer = JSON.parse(JSON.stringify(this.customer || <CustomerModel>{}))
     }

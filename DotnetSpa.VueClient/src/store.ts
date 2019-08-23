@@ -27,12 +27,12 @@ export default new Vuex.Store({
       }
     },
     mergeCustomer(state: any, customer: CustomerModel): void {
-      const existingCustomerIndex = state.customers.findIndex(
+      const customerIndex = state.customers.findIndex(
         (c: CustomerModel) => c.id === customer.id
       );
-      if (existingCustomerIndex !== -1) {
-        state.customers[existingCustomerIndex].firstName = customer.firstName;
-        state.customers[existingCustomerIndex].lastName = customer.lastName;
+      if (customerIndex !== -1) {
+        state.customers[customerIndex].firstName = customer.firstName;
+        state.customers[customerIndex].lastName = customer.lastName;
       } else {
         state.customers.push(customer);
       }
@@ -44,6 +44,17 @@ export default new Vuex.Store({
       axios
         .put(`http://localhost:5000/api/customer/${customerId}`, mergeCustomer)
         .catch(() => alert('Error saving changes to Customer.'));
+    },
+    deleteCustomer(state: any, customerId: number): void {
+      const customerIndex = state.customers.findIndex(
+        (c: CustomerModel) => c.id === customerId
+      );
+      if (customerIndex !== -1) {
+        state.customers.splice(customerIndex, 1);
+      }
+      axios
+        .delete(`http://localhost:5000/api/customer/${customerId}`)
+        .catch(() => alert('Error deleting Customer.'));
     }
   },
   actions: {
