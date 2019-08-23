@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace NodeDotnet.WebApi
+namespace DotnetSpa.WebApi
 {
     public class Startup
     {

@@ -1,11 +1,10 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
+using DotnetSpa.WebApi.Data;
+using DotnetSpa.WebApi.Models;
 using Microsoft.AspNetCore.Mvc;
-using NodeDotnet.WebApi.MockData;
-using NodeDotnet.WebApi.Models;
 
-namespace NodeDotnet.WebApi.Controllers
+namespace DotnetSpa.WebApi.Controllers
 {
     [Route("api/customer/{customerId}/orders")]
     [ApiController]

@@ -1,4 +1,4 @@
-namespace NodeDotnet.WebApi.Models
+namespace DotnetSpa.WebApi.Models
 {
     public class Order
     {

@@ -1,5 +1,7 @@
 export default class CustomerModel {
-  id?: number;
-  firstName?: string;
-  lastName?: string;
+  constructor(
+    public id: number,
+    public firstName: string,
+    public lastName: string
+  ) {}
 }

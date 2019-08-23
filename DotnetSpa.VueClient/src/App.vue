@@ -64,7 +64,7 @@ header {
     font-size: $headerFontSize;
     background-color: $primaryColor;
     @include dynamic-font-color($primaryColor);
-
+    
     .site-name {
       grid-area: site-name;
       padding-left: 2rem;

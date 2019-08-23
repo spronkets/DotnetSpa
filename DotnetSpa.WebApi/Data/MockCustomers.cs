@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using NodeDotnet.WebApi.Models;
+using DotnetSpa.WebApi.Models;
 
-namespace NodeDotnet.WebApi.MockData
+namespace DotnetSpa.WebApi.Data
 {
     internal class MockCustomers
     {

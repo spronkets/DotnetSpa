@@ -52,4 +52,5 @@ export default class Orders extends Vue {
 </script>
 
 <style lang="scss" scoped>
+  @import '../assets/styles/common';
 </style>

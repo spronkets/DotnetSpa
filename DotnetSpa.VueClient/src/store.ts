@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 import axios, { AxiosResponse } from 'axios';
 import CustomerModel from '@/models/customer';
 import OrderModel from '@/models/order';
+import MergeCustomerModel from './models/merge-customer';
 
 Vue.use(Vuex);
 
@@ -10,7 +11,7 @@ export default new Vuex.Store({
   state: {
     customers: Array<CustomerModel>(),
     selectedCustomer: undefined,
-    selectedCustomerOrders: Array<OrderModel>(),
+    selectedCustomerOrders: Array<OrderModel>()
   },
   mutations: {
     selectCustomer(state: any, customer: CustomerModel): void {
@@ -24,6 +25,25 @@ export default new Vuex.Store({
         state.selectedCustomer = undefined;
         state.selectedCustomerOrders = [];
       }
+    },
+    mergeCustomer(state: any, customer: CustomerModel): void {
+      const existingCustomerIndex = state.customers.findIndex(
+        (c: CustomerModel) => c.id === customer.id
+      );
+      if (existingCustomerIndex !== -1) {
+        state.customers[existingCustomerIndex].firstName = customer.firstName;
+        state.customers[existingCustomerIndex].lastName = customer.lastName;
+      } else {
+        state.customers.push(customer);
+      }
+      const customerId = customer.id;
+      const mergeCustomer = <MergeCustomerModel>{
+        firstName: customer.firstName,
+        lastName: customer.lastName
+      };
+      axios
+        .put(`http://localhost:5000/api/customer/${customerId}`, mergeCustomer)
+        .catch(() => alert('Error saving changes to Customer.'));
     }
   },
   actions: {

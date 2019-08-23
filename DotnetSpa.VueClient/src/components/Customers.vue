@@ -7,11 +7,13 @@
         <td>Id</td>
         <td>First Name</td>
         <td>Last Name</td>
+        <td></td>
       </tr>
       <tr v-for="customer in customers" v-bind:key="customer.id" v-on:click="selectCustomer(customer)" v-bind:class="{ selected: isCustomerSelected(customer.id) }">
         <td>{{customer.id}}</td>
         <td>{{customer.firstName}}</td>
         <td>{{customer.lastName}}</td>
+        <td><EditCustomer :customer="customer" /></td>
       </tr>
     </table>
     <p v-else>No Customers found.</p>
@@ -21,8 +23,13 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import CustomerModel from '@/models/customer';
+import EditCustomer from '@/components/EditCustomer.vue';
 
-@Component
+@Component({
+  components: {
+    EditCustomer
+  }
+})
 export default class Customers extends Vue {
   loading: boolean = false;
 
@@ -62,11 +69,10 @@ export default class Customers extends Vue {
 </script>
 
 <style lang="scss" scoped>
-  @import '../assets/styles/variables';
+  @import '../assets/styles/common';
 
-  tr {
+  tr:not(:first-child) {
     cursor: pointer;
-    user-select: none;
 
     &.selected {
       background-color: $highlighterColor;

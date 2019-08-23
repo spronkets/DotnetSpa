@@ -1,5 +1,7 @@
 export default class OrderModel {
-  id?: number;
-  customerId?: number;
-  totalPrice?: number;
+  constructor(
+    public id: number,
+    public customerId: number,
+    public totalPrice: number
+  ) {}
 }
