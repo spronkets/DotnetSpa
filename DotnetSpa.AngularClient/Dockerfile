@@ -1,4 +1,4 @@
-FROM node:10.16.3
+FROM node:22.14.0
 WORKDIR /app
 EXPOSE 4200
 

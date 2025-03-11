@@ -1,8 +1,7 @@
-namespace DotnetSpa.WebApi.Models
+namespace DotnetSpa.WebApi.Models;
+
+public class MergeCustomerRequest
 {
-    public class MergeCustomerRequest
-    {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-    }
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
 }

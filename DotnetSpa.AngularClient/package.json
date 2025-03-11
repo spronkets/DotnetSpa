@@ -1,6 +1,7 @@
 {
-  "name": "angular-client",
+  "name": "@dotnetspa/angular-client",
   "version": "0.0.1",
+  "private": true,
   "scripts": {
     "rimraf": "rimraf",
     "clean": "rimraf ./node_modules",
@@ -16,7 +17,6 @@
     "start": "ng serve",
     "start:docker": "ng serve --host 0.0.0.0 --disableHostCheck"
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "^8.2.3",
     "@angular/common": "^8.2.3",

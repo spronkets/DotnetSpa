@@ -1,19 +1,17 @@
-using System.Collections.Generic;
 using DotnetSpa.WebApi.Models;
 
-namespace DotnetSpa.WebApi.Data
+namespace DotnetSpa.WebApi.Data;
+
+internal class MockCustomers
 {
-    internal class MockCustomers
-    {
-        public static List<Customer> Customers =
-            new List<Customer>
+    public static List<Customer> Customers =
+        new List<Customer>
+        {
+            new Customer
             {
-                new Customer
-                {
-                    Id = 1,
-                    FirstName = "Homer",
-                    LastName = "Simpson"
-                }
-            };
-    }
+                Id = 1,
+                FirstName = "Homer",
+                LastName = "Simpson"
+            }
+        };
 }
