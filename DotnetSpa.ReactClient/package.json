@@ -1,5 +1,5 @@
 {
-  "name": "react-client",
+  "name": "@dotnetspa/react-client",
   "private": true,
   "type": "module",
   "scripts": {
