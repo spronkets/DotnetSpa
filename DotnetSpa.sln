@@ -11,47 +11,32 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		docker-compose.yml = docker-compose.yml
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotnetSpa.WebApi", "DotnetSpa.WebApi\DotnetSpa.WebApi.csproj", "{137A308F-83C0-47E8-8092-3ABE98DEBF9B}"
+EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "DotnetSpa.AngularClient", "DotnetSpa.AngularClient\", "{F5B2E76F-34EB-46DB-B8A6-540B495FEB2C}"
 	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.VirtualPath = "/localhost_3542"
-		Debug.AspNetCompiler.PhysicalPath = "DotnetSpa.AngularClient\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_3542\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_3542"
-		Release.AspNetCompiler.PhysicalPath = "DotnetSpa.AngularClient\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_3542\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "3542"
 		SlnRelativePath = "DotnetSpa.AngularClient\"
 	EndProjectSection
 EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "DotnetSpa.VueClient", "DotnetSpa.VueClient\", "{3721DE01-F1AF-4065-BB99-67973CCAB49C}"
 	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.VirtualPath = "/localhost_3038"
-		Debug.AspNetCompiler.PhysicalPath = "DotnetSpa.VueClient\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_3038\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_3038"
-		Release.AspNetCompiler.PhysicalPath = "DotnetSpa.VueClient\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_3038\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "3038"
 		SlnRelativePath = "DotnetSpa.VueClient\"
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotnetSpa.WebApi", "DotnetSpa.WebApi\DotnetSpa.WebApi.csproj", "{137A308F-83C0-47E8-8092-3ABE98DEBF9B}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "DotnetSpa.ReactClient", "DotnetSpa.ReactClient\", "{EFE38E2C-0C5B-FA73-CDD5-1AD7551BDE86}"
+	ProjectSection(WebsiteProperties) = preProject
+		SlnRelativePath = "DotnetSpa.ReactClient\"
+	EndProjectSection
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "DotnetSpa.SvelteClient", "DotnetSpa.SvelteClient\", "{1DDA03C3-792C-37B9-7F1D-2BF2BB39706E}"
+	ProjectSection(WebsiteProperties) = preProject
+		SlnRelativePath = "DotnetSpa.SvelteClient\"
+	EndProjectSection
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "DotnetSpa.Vue3Client", "DotnetSpa.Vue3Client\", "{D0F97A5B-1410-4D69-8536-7FCBC57A0741}"
+	ProjectSection(WebsiteProperties) = preProject
+		SlnRelativePath = "DotnetSpa.Vue3Client\"
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,16 +44,28 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{137A308F-83C0-47E8-8092-3ABE98DEBF9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{137A308F-83C0-47E8-8092-3ABE98DEBF9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{137A308F-83C0-47E8-8092-3ABE98DEBF9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{137A308F-83C0-47E8-8092-3ABE98DEBF9B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F5B2E76F-34EB-46DB-B8A6-540B495FEB2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F5B2E76F-34EB-46DB-B8A6-540B495FEB2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5B2E76F-34EB-46DB-B8A6-540B495FEB2C}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{F5B2E76F-34EB-46DB-B8A6-540B495FEB2C}.Release|Any CPU.Build.0 = Debug|Any CPU
 		{3721DE01-F1AF-4065-BB99-67973CCAB49C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3721DE01-F1AF-4065-BB99-67973CCAB49C}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{137A308F-83C0-47E8-8092-3ABE98DEBF9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{137A308F-83C0-47E8-8092-3ABE98DEBF9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{137A308F-83C0-47E8-8092-3ABE98DEBF9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{137A308F-83C0-47E8-8092-3ABE98DEBF9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFE38E2C-0C5B-FA73-CDD5-1AD7551BDE86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFE38E2C-0C5B-FA73-CDD5-1AD7551BDE86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFE38E2C-0C5B-FA73-CDD5-1AD7551BDE86}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFE38E2C-0C5B-FA73-CDD5-1AD7551BDE86}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{1DDA03C3-792C-37B9-7F1D-2BF2BB39706E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DDA03C3-792C-37B9-7F1D-2BF2BB39706E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DDA03C3-792C-37B9-7F1D-2BF2BB39706E}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DDA03C3-792C-37B9-7F1D-2BF2BB39706E}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{D0F97A5B-1410-4D69-8536-7FCBC57A0741}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0F97A5B-1410-4D69-8536-7FCBC57A0741}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0F97A5B-1410-4D69-8536-7FCBC57A0741}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0F97A5B-1410-4D69-8536-7FCBC57A0741}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
