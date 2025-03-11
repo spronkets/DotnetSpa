@@ -1,62 +1,38 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-
+import {
+  CustomerListComponent,
+  OrderListComponent,
+} from '../../shared/components';
 import { Customer, Order } from '../../shared/models';
-import { CustomersService, CustomerOrdersService } from '../../shared/services';
+import { CustomerOrdersService, CustomersService } from '../../shared/services';
+import { Observable, of } from 'rxjs';
 
 @Component({
-  templateUrl: './dashboard.component.html'
+  templateUrl: './dashboard.component.html',
+  imports: [CommonModule, OrderListComponent, CustomerListComponent],
 })
 export class DashboardComponent implements OnInit {
-  loadingCustomers: boolean = false;
-  shouldShowCustomerOrders: boolean = false;
-  loadingCustomerOrders: boolean = false;
-
-  customers: Customer[] = [];
-  customerOrders: Order[] = [];
+  customers$: Observable<Customer[]> = of([]);
+  customerOrders$: Observable<Order[]> = of([]);
+  customerId: Number | undefined = undefined;
 
   constructor(
     private customersService: CustomersService,
     private customerOrdersService: CustomerOrdersService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
-    this.refreshCustomers();
+    this.customers$ = this.customersService.getCustomers();
   }
 
   customerSelected(customer?: Customer): void {
     if (customer && customer.id) {
-      this.shouldShowCustomerOrders = true;
-      this.refreshCustomerOrders(customer.id);
+      this.customerOrders$ = this.customerOrdersService.getCustomerOrders(customer.id);
+      this.customerId = customer.id;
     } else {
-      this.shouldShowCustomerOrders = false;
-      this.customerOrders = [];
+      this.customerOrders$ = of([]);
+      this.customerId = undefined;
     }
-  }
-
-  private refreshCustomers(): void {
-    this.loadingCustomers = true;
-    this.customersService.getCustomers().subscribe(
-      (customers: Customer[]) => {
-        this.customers = customers;
-        this.loadingCustomers = false;
-      },
-      (error: any) => {
-        this.customers = [];
-        this.loadingCustomers = false;
-      });
-  }
-
-  private refreshCustomerOrders(customerId: number): void {
-    this.loadingCustomerOrders = true;
-    this.customerOrdersService
-      .getCustomerOrders(customerId).subscribe(
-        (customers: Customer[]) => {
-          this.customerOrders = customers;
-          this.loadingCustomerOrders = false;
-        },
-        (error: any) => {
-          this.customers = [];
-          this.loadingCustomers = false;
-        });
   }
 }

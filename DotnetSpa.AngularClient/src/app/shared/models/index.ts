@@ -1,2 +1,2 @@
-export { Customer } from './customer';
-export { Order } from './order';
+export { type Customer } from "./customer";
+export { type Order } from "./order";

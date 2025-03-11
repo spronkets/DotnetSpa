@@ -6,7 +6,7 @@
     <td>Last Name</td>
   </tr>
   <tr *ngFor="let customer of customers" (click)="selectCustomer(customer)"
-    [class.selected]="isCustomerSelected(customer.id)">
+      [class.selected]="isCustomerSelected(customer.id)">
     <td>{{customer.id}}</td>
     <td>{{customer.firstName}}</td>
     <td>{{customer.lastName}}</td>

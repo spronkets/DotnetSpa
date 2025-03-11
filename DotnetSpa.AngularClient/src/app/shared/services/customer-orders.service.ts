@@ -8,7 +8,7 @@ import Order from '../models/order';
   providedIn: 'root'
 })
 export class CustomerOrdersService {
-  private customerUrl: string = 'http://localhost:5000/api/customer';
+  private customerUrl: string = 'https://localhost:44314/api/customer';
 
   constructor(private http: HttpClient) {}
 

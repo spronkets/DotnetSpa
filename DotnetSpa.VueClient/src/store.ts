@@ -42,7 +42,7 @@ export default new Vuex.Store({
         lastName: customer.lastName
       };
       axios
-        .put(`http://localhost:5000/api/customer/${customerId}`, mergeCustomer)
+        .put(`https://localhost:44314/api/customer/${customerId}`, mergeCustomer)
         .catch(() => alert('Error saving changes to Customer.'));
     },
     deleteCustomer(state: any, customerId: number): void {
@@ -53,21 +53,21 @@ export default new Vuex.Store({
         state.customers.splice(customerIndex, 1);
       }
       axios
-        .delete(`http://localhost:5000/api/customer/${customerId}`)
+        .delete(`https://localhost:44314/api/customer/${customerId}`)
         .catch(() => alert('Error deleting Customer.'));
     }
   },
   actions: {
     async refreshCustomers(): Promise<void> {
       const response: AxiosResponse = await axios.get(
-        'http://localhost:5000/api/customers'
+        'https://localhost:44314/api/customers'
       );
       this.state.customers = response.data;
     },
     async refreshCustomerOrders(): Promise<void> {
       const customerId: number = this.state.selectedCustomer.id;
       const response: AxiosResponse = await axios.get(
-        `http://localhost:5000/api/customer/${customerId}/orders`
+        `https://localhost:44314/api/customer/${customerId}/orders`
       );
       this.state.selectedCustomerOrders = response.data;
     }
