@@ -8,12 +8,10 @@ namespace DotnetSpa.WebApi.Controllers;
 [ApiController]
 public class CustomerOrdersController : ControllerBase
 {
-    private List<Order> Orders => MockOrders.Orders;
-
     [HttpGet]
     public ActionResult<List<Order>> GetOrders([FromRoute] long customerId)
     {
-        var orders = Orders.Where(c => c.Id == customerId);
+        var orders = MockOrders.Orders.Where(c => c.Id == customerId);
         return Ok(orders);
     }
 
@@ -23,12 +21,12 @@ public class CustomerOrdersController : ControllerBase
         var order =
             new Order
             {
-                Id = Orders.Max(c => c.Id) + 1,
+                Id = MockOrders.Orders.Max(c => c.Id) + 1,
                 CustomerId = customerId,
                 TotalPrice = request.TotalPrice
             };
 
-        Orders.Add(order);
+        MockOrders.Orders.Add(order);
 
         return Ok();
     }

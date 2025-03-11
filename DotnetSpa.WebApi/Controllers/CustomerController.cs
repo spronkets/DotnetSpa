@@ -8,29 +8,27 @@ namespace DotnetSpa.WebApi.Controllers;
 [ApiController]
 public class CustomerController : ControllerBase
 {
-    private List<Customer> Customers => MockCustomers.Customers;
-
     [HttpGet]
     public ActionResult<Customer> GetCustomer([FromRoute] long customerId)
     {
-        var customer = Customers.SingleOrDefault(c => c.Id == customerId);
+        var customer = MockCustomers.Customers.SingleOrDefault(c => c.Id == customerId);
         return Ok(customer);
     }
 
     [HttpPut]
     public ActionResult MergeCustomer([FromRoute] long customerId, [FromBody] MergeCustomerRequest request)
     {
-        var existingCustomer = Customers.SingleOrDefault(c => c.Id == customerId);
+        var existingCustomer = MockCustomers.Customers.SingleOrDefault(c => c.Id == customerId);
         if (existingCustomer == null)
         {
             var customer =
                 new Customer
                 {
-                    Id = Customers.Max(c => c.Id) + 1,
+                    Id = MockCustomers.Customers.Max(c => c.Id) + 1,
                     FirstName = request.FirstName,
                     LastName = request.LastName
                 };
-            Customers.Add(customer);
+            MockCustomers.Customers.Add(customer);
         }
         else
         {
@@ -44,10 +42,10 @@ public class CustomerController : ControllerBase
     [HttpDelete]
     public ActionResult DeleteCustomer([FromRoute] long customerId)
     {
-        var existingCustomerIndex = Customers.FindIndex(c => c.Id == customerId);
+        var existingCustomerIndex = MockCustomers.Customers.FindIndex(c => c.Id == customerId);
         if (existingCustomerIndex != -1)
         {
-            Customers.RemoveAt(existingCustomerIndex);
+            MockCustomers.Customers.RemoveAt(existingCustomerIndex);
         }
 
         return Ok();

@@ -8,11 +8,9 @@ namespace DotnetSpa.WebApi.Controllers;
 [ApiController]
 public class CustomersController : ControllerBase
 {
-    private List<Customer> Customers => MockCustomers.Customers;
-
     [HttpGet]
     public ActionResult<List<Customer>> GetCustomers()
     {
-        return Ok(Customers);
+        return Ok(MockCustomers.Customers);
     }
 }

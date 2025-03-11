@@ -18,6 +18,12 @@ internal class MockOrders
                 Id = 2,
                 CustomerId = 1,
                 TotalPrice = 23.45m
+            },
+            new Order
+            {
+                Id = 2,
+                CustomerId = 2,
+                TotalPrice = 34.56m
             }
         };
 }
