@@ -9,7 +9,6 @@ This project is an example of an ASP.NET Core 9 Web API with different rudamenta
   - [React](#react--dotnetspareactclient)
   - [Svelte](#svelte--dotnetspasvelteclient)
   - [Vue 3](#vue-3--dotnetspavue3client)
-  - [Vue 2](#vue-2--dotnetspavueclient)
 
 - [Docker](#docker)
 
@@ -39,12 +38,6 @@ This is a minimalistic Angular frontend that hits the WebApi.
 
 ## Vue 3
 ### DotnetSpa.Vue3Client
-(TODO)
-
----
-
-## Vue 2
-### DotnetSpa.VueClient
 This is a minimalistic Vue frontend that hits the WebApi using TypeScript, Vuex, and Axios.
 
 ---

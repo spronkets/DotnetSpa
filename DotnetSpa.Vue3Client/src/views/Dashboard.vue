@@ -5,22 +5,15 @@
   </div>
 </template>
 
-<script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+<script setup lang="ts">
+import { computed } from 'vue';
+import { useStore } from 'vuex';
 import Customers from '@/components/Customers.vue';
 import CustomerOrders from '@/components/CustomerOrders.vue';
 
-@Component({
-  components: {
-    Customers,
-    CustomerOrders
-  }
-})
-export default class Dashboard extends Vue {
-  get hasSelectedCustomer(): boolean {
-    return !!this.$store.state.selectedCustomer;
-  }
-}
+const store = useStore();
+
+const hasSelectedCustomer = computed(() => !!store.state.selectedCustomer);
 </script>
 
 <style lang="scss" scoped>
