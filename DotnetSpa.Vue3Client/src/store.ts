@@ -28,7 +28,7 @@ const store = createStore<State>({
         state.selectedCustomerOrders = [];
       }
     },
-    mergeCustomer(state, customer: CustomerModel): void {
+    updateCustomer(state, customer: CustomerModel): void {
       const customerIndex = state.customers.findIndex((c) => c.id === customer.id);
       if (customerIndex !== -1) {
         state.customers[customerIndex].firstName = customer.firstName;
