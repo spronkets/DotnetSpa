@@ -3,13 +3,13 @@ import { Component, Input } from '@angular/core';
 import Order from '../../models/order';
 
 @Component({
-  selector: 'order-list',
+  selector: 'customer-orders',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './order-list.component.html'
+  templateUrl: './customer-orders.component.html'
 })
-export class OrderListComponent {
+export class CustomerOrdersComponent {
   @Input() orders: Order[] = [];
 }
 
-export default OrderListComponent;
+export default CustomerOrdersComponent;

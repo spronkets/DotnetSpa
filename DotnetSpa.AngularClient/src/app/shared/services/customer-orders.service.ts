@@ -8,13 +8,12 @@ import Order from '../models/order';
   providedIn: 'root'
 })
 export class CustomerOrdersService {
-  private customerUrl: string = 'https://localhost:44314/api/customer';
+  private baseUrl: string = 'https://localhost:44314/api/';
 
   constructor(private http: HttpClient) {}
 
   getCustomerOrders(customerId: number): Observable<Order[]> {
-    const customerOrdersUrl = `${this.customerUrl}/${customerId}/orders`;
-    return this.http.get<Order[]>(customerOrdersUrl);
+    return this.http.get<Order[]>(`${this.baseUrl}/customer/${customerId}/orders`);
   }
 }
 

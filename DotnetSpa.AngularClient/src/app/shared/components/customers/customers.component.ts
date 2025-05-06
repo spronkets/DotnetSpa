@@ -3,13 +3,13 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import Customer from '../../models/customer';
 
 @Component({
-  selector: 'customer-list',
+  selector: 'customers',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './customer-list.component.html',
-  styleUrls: ['./customer-list.component.scss'],
+  templateUrl: './customers.component.html',
+  styleUrls: ['./customers.component.scss'],
 })
-export class CustomerListComponent {
+export class CustomersComponent {
   @Input() customers: Customer[] = [];
 
   @Output() selected: EventEmitter<Customer> = new EventEmitter();
@@ -34,4 +34,4 @@ export class CustomerListComponent {
   }
 }
 
-export default CustomerListComponent;
+export default CustomersComponent;

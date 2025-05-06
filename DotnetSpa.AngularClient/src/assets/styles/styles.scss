@@ -1,29 +1,31 @@
-<template>
-  <header>
-    <div class="site-name">
-      <router-link to="/">DotnetSpa</router-link>
-    </div>
-  </header>
+@import 'common';
 
-  <nav>
-    <ul>
-      <li>
-        <router-link to="/dashboard">Dashboard</router-link>
-      </li>
-    </ul>
-  </nav>
+$navWidth: 14rem;
 
-  <main>
-    <router-view />
-  </main>
+html {
+  font-size: $fontSize;
+}
 
-  <footer>
-    <span>Vue 3 Client by Kody Crossman</span>
-  </footer>
-</template>
+body {
+  width: 100%;
+  height: 100%;
+  font-size: 1rem;
+  margin: 0;
+  padding: 0;
+}
 
-<style lang="scss">
-@import '@/assets/styles/common';
+#app {
+  position: relative;
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "nav main"
+    "nav footer";
+  grid-template-columns: $navWidth 1fr;
+  grid-template-rows: auto 1fr auto;
+
+  height: 100vh;
+}
 
 header {
   position: relative;
@@ -113,4 +115,3 @@ footer {
   background-color: $quaternaryColor;
   @include dynamic-font-color($quaternaryColor);
 }
-</style>

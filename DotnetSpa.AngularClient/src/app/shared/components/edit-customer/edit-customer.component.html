@@ -1,0 +1,38 @@
+<div class="edit-customer">
+  <button @click.stop="show"><i class="fas fa-user-edit"></i></button>
+  <div class="backdrop" @click.stop="hide" v-show="showDialog">
+    <div class="dialog" @click.stop="" v-show="showDialog">
+      <div class="dialog-header">
+        <div class="left">
+          <div class="center-container">
+            <strong>Edit Customer</strong>
+          </div>
+        </div>
+        <div class="right">
+          <div class="center-container">
+            <a @click.stop="hide"><i class="fas fa-times"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="dialog-body">
+        <form @submit.prevent="saveChanges">
+          <input v-model.trim="formCustomer.firstName" placeholder="First Name" title="First Name">
+          <input v-model.trim="formCustomer.lastName" placeholder="Last Name" title="Last Name">
+        </form>
+      </div>
+      <div class="dialog-footer">
+        <div class="left">
+          <div class="center-container">
+            <button class="delete-button" @click="deleteCustomer">Delete</button>
+          </div>
+        </div>
+        <div class="right">
+          <div class="center-container">
+            <button class="save-button" @click="saveChanges">Save</button>
+            <button class="cancel-button" @click="hide">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

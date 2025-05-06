@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import {
-  CustomerListComponent,
-  OrderListComponent,
+  CustomersComponent,
+  CustomerOrdersComponent,
 } from '../../shared/components';
 import { Customer, Order } from '../../shared/models';
 import { CustomerOrdersService, CustomersService } from '../../shared/services';
@@ -10,7 +10,7 @@ import { Observable, of } from 'rxjs';
 
 @Component({
   templateUrl: './dashboard.component.html',
-  imports: [CommonModule, OrderListComponent, CustomerListComponent],
+  imports: [CommonModule, CustomerOrdersComponent, CustomersComponent],
 })
 export class DashboardComponent implements OnInit {
   customers$: Observable<Customer[]> = of([]);

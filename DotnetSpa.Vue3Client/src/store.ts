@@ -79,7 +79,7 @@ const store = createStore<State>({
       };
       try {
         await axios.put(`https://localhost:44314/api/customer/${customer.id}`, mergeCustomer);
-        commit('mergeCustomer', customer);
+        commit('updateCustomer', customer);
       } catch {
         alert('Error saving changes to Customer.');
       }

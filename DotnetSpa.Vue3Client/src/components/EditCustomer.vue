@@ -66,7 +66,7 @@ export default defineComponent({
     };
 
     const saveChanges = () => {
-      store.commit('mergeCustomer', formCustomer);
+      store.commit('updateCustomer', formCustomer);
       hide();
     };
 

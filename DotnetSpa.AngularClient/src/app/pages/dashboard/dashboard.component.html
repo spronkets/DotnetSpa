@@ -1,5 +1,5 @@
 <p *ngIf="customers$ | async as customers; else loadingCustomers">
-  <customer-list [customers]="customers" (selected)="customerSelected($event)"></customer-list>
+  <customers [customers]="customers" (selected)="customerSelected($event)"></customers>
 </p>
 
 <ng-template #loadingCustomers>
@@ -8,7 +8,7 @@
 
 <ng-container *ngIf="customerId">
   <p *ngIf="customerOrders$ | async as orders; else loadingOrders">
-    <order-list [orders]="orders"></order-list>
+    <customer-orders [orders]="orders"></customer-orders>
   </p>
 </ng-container>
 
