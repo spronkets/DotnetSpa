@@ -21,29 +21,29 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, onMounted } from 'vue';
-import { useStore } from 'vuex';
+  import { computed, ref, onMounted } from 'vue';
+  import { useStore } from 'vuex';
 
-const store = useStore();
+  const store = useStore();
 
-const loading = ref(false);
+  const loading = ref(false);
 
-const customer = computed(() => store.state.selectedCustomer);
-const orders = computed(() => store.state.selectedCustomerOrders);
-const hasOrders = computed(() => orders.value && orders.value.length > 0);
+  const customer = computed(() => store.state.selectedCustomer);
+  const orders = computed(() => store.state.selectedCustomerOrders);
+  const hasOrders = computed(() => orders.value && orders.value.length > 0);
 
-onMounted(() => {
-  if (!hasOrders.value) {
-    refreshOrders();
-  }
-});
-
-function refreshOrders(): void {
-  loading.value = true;
-  store.dispatch('refreshCustomerOrders').finally(() => {
-    loading.value = false;
+  onMounted(() => {
+    if (!hasOrders.value) {
+      refreshOrders();
+    }
   });
-}
+
+  function refreshOrders(): void {
+    loading.value = true;
+    store.dispatch('refreshCustomerOrders').finally(() => {
+      loading.value = false;
+    });
+  }
 </script>
 
 <style lang="scss" scoped>

@@ -3,5 +3,5 @@ export default class OrderModel {
     public id: number,
     public customerId: number,
     public totalPrice: number
-  ) {}
+  ) { }
 }

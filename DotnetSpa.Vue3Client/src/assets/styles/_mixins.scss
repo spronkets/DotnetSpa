@@ -22,7 +22,8 @@
 @mixin dynamic-font-color($color) {
   @if (lightness($color) > 50) {
     color: $darkFontColor;
-  } @else {
+  }
+  @else {
     color: $lightFontColor;
   }
 }

@@ -21,39 +21,39 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, onMounted } from 'vue';
-import { useStore } from 'vuex';
-import CustomerModel from '@/models/customer';
-import EditCustomer from '@/components/EditCustomer.vue';
+  import { computed, ref, onMounted } from 'vue';
+  import { useStore } from 'vuex';
+  import CustomerModel from '@/models/customer';
+  import EditCustomer from '@/components/EditCustomer.vue';
 
-const store = useStore();
+  const store = useStore();
 
-const loading = ref(false);
+  const loading = ref(false);
 
-const customers = computed(() => store.state.customers);
-const selectedCustomer = computed(() => store.state.selectedCustomer);
-const hasCustomers = computed(() => customers.value && customers.value.length > 0);
+  const customers = computed(() => store.state.customers);
+  const selectedCustomer = computed(() => store.state.selectedCustomer);
+  const hasCustomers = computed(() => customers.value && customers.value.length > 0);
 
-onMounted(() => {
-  if (!hasCustomers.value) {
-    refreshCustomers();
-  }
-});
-
-function refreshCustomers(): void {
-  loading.value = true;
-  store.dispatch('refreshCustomers').finally(() => {
-    loading.value = false;
+  onMounted(() => {
+    if (!hasCustomers.value) {
+      refreshCustomers();
+    }
   });
-}
 
-function selectCustomer(customer: CustomerModel): void {
-  store.commit('selectCustomer', customer);
-}
+  function refreshCustomers(): void {
+    loading.value = true;
+    store.dispatch('refreshCustomers').finally(() => {
+      loading.value = false;
+    });
+  }
 
-function isCustomerSelected(customerId: number): boolean {
-  return selectedCustomer.value?.id === customerId;
-}
+  function selectCustomer(customer: CustomerModel): void {
+    store.commit('selectCustomer', customer);
+  }
+
+  function isCustomerSelected(customerId: number): boolean {
+    return selectedCustomer.value?.id === customerId;
+  }
 </script>
 
 <style lang="scss" scoped>

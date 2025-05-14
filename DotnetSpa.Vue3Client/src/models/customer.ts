@@ -3,5 +3,5 @@ export default class CustomerModel {
     public id: number,
     public firstName: string,
     public lastName: string
-  ) {}
+  ) { }
 }
