@@ -36,27 +36,6 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "DotnetSpa.AngularClient", "
 		SlnRelativePath = "DotnetSpa.AngularClient\"
 	EndProjectSection
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "DotnetSpa.VueClient", "DotnetSpa.VueClient\", "{3721DE01-F1AF-4065-BB99-67973CCAB49C}"
-	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.8"
-		Debug.AspNetCompiler.VirtualPath = "/localhost_3038"
-		Debug.AspNetCompiler.PhysicalPath = "DotnetSpa.VueClient\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_3038\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_3038"
-		Release.AspNetCompiler.PhysicalPath = "DotnetSpa.VueClient\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_3038\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "3038"
-		SlnRelativePath = "DotnetSpa.VueClient\"
-	EndProjectSection
-EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "DotnetSpa.ReactClient", "DotnetSpa.ReactClient\", "{EFE38E2C-0C5B-FA73-CDD5-1AD7551BDE86}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.8"
@@ -134,8 +113,6 @@ Global
 		{F5B2E76F-34EB-46DB-B8A6-540B495FEB2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5B2E76F-34EB-46DB-B8A6-540B495FEB2C}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{F5B2E76F-34EB-46DB-B8A6-540B495FEB2C}.Release|Any CPU.Build.0 = Debug|Any CPU
-		{3721DE01-F1AF-4065-BB99-67973CCAB49C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3721DE01-F1AF-4065-BB99-67973CCAB49C}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{EFE38E2C-0C5B-FA73-CDD5-1AD7551BDE86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EFE38E2C-0C5B-FA73-CDD5-1AD7551BDE86}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EFE38E2C-0C5B-FA73-CDD5-1AD7551BDE86}.Release|Any CPU.ActiveCfg = Debug|Any CPU

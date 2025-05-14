@@ -1,3 +1,5 @@
+using DotnetSpa.WebApi.Interfaces;
+using DotnetSpa.WebApi.Services;
 using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,6 +18,8 @@ builder.Services.AddCors(options =>
 });
 
 // Add services to the container.
+builder.Services.AddSingleton<ICustomerService, CustomerService>();
+builder.Services.AddSingleton<ICustomerOrdersService, CustomerOrdersService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi

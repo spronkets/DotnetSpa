@@ -1,4 +1,4 @@
-using DotnetSpa.WebApi.Data;
+using DotnetSpa.WebApi.Interfaces;
 using DotnetSpa.WebApi.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,44 +8,35 @@ namespace DotnetSpa.WebApi.Controllers;
 [ApiController]
 public class CustomerController : ControllerBase
 {
+    private readonly ICustomerService _customerService;
+
+    public CustomerController(ICustomerService customerService)
+    {
+        _customerService = customerService;
+    }
+
     [HttpGet]
     public ActionResult<Customer> GetCustomer([FromRoute] long customerId)
     {
-        var customer = MockCustomers.Customers.SingleOrDefault(c => c.Id == customerId);
+        var customer = _customerService.GetCustomer(customerId);
         return Ok(customer);
     }
 
     [HttpPut]
     public ActionResult MergeCustomer([FromRoute] long customerId, [FromBody] MergeCustomerRequest request)
     {
-        var existingCustomer = MockCustomers.Customers.SingleOrDefault(c => c.Id == customerId);
-        if (existingCustomer == null)
-        {
-            var customer =
-                new Customer
-                {
-                    Id = MockCustomers.Customers.Max(c => c.Id) + 1,
-                    FirstName = request.FirstName,
-                    LastName = request.LastName
-                };
-            MockCustomers.Customers.Add(customer);
-        }
-        else
-        {
-            existingCustomer.FirstName = request.FirstName;
-            existingCustomer.LastName = request.LastName;
-        }
-
-        return Ok();
+        var customer = _customerService.MergeCustomer(customerId, request);
+        return Ok(customer);
     }
 
     [HttpDelete]
     public ActionResult DeleteCustomer([FromRoute] long customerId)
     {
-        var existingCustomerIndex = MockCustomers.Customers.FindIndex(c => c.Id == customerId);
-        if (existingCustomerIndex != -1)
+        var isDeleted = _customerService.DeleteCustomer(customerId);
+
+        if (!isDeleted)
         {
-            MockCustomers.Customers.RemoveAt(existingCustomerIndex);
+            Console.WriteLine($"Customer {customerId} has already been deleted.");
         }
 
         return Ok();

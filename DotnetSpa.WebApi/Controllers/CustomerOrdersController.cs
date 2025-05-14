@@ -1,4 +1,4 @@
-using DotnetSpa.WebApi.Data;
+using DotnetSpa.WebApi.Interfaces;
 using DotnetSpa.WebApi.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,26 +8,24 @@ namespace DotnetSpa.WebApi.Controllers;
 [ApiController]
 public class CustomerOrdersController : ControllerBase
 {
-    [HttpGet]
-    public ActionResult<List<Order>> GetOrders([FromRoute] long customerId)
+    private readonly ICustomerOrdersService _customerOrdersService;
+
+    public CustomerOrdersController(ICustomerOrdersService customerOrdersService)
     {
-        var orders = MockOrders.Orders.Where(c => c.Id == customerId);
+        _customerOrdersService = customerOrdersService;
+    }
+
+    [HttpGet]
+    public ActionResult<List<Order>> GetCustomerOrders([FromRoute] long customerId)
+    {
+        var orders = _customerOrdersService.GetCustomerOrders(customerId);
         return Ok(orders);
     }
 
     [HttpPost]
-    public ActionResult CreateOrder([FromRoute] long customerId, [FromBody] CreateOrderRequest request)
+    public ActionResult<Order> CreateCustomerOrder([FromRoute] long customerId, [FromBody] CreateOrderRequest request)
     {
-        var order =
-            new Order
-            {
-                Id = MockOrders.Orders.Max(c => c.Id) + 1,
-                CustomerId = customerId,
-                TotalPrice = request.TotalPrice
-            };
-
-        MockOrders.Orders.Add(order);
-
-        return Ok();
+        var order = _customerOrdersService.CreateCustomerOrder(customerId, request);
+        return Ok(order);
     }
 }

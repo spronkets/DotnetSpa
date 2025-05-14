@@ -56,6 +56,8 @@ export default defineComponent({
     const formCustomer = reactive<CustomerModel>({});
     const showDialog = ref(false);
 
+    const loading = ref(false);
+
     const show = () => {
       resetCustomer();
       showDialog.value = true;
@@ -66,13 +68,19 @@ export default defineComponent({
     };
 
     const saveChanges = () => {
-      store.commit('updateCustomer', formCustomer);
-      hide();
+      loading.value = true;
+      store.dispatch('saveCustomerChanges', formCustomer).finally(() => {
+        loading.value = false;
+        hide();
+      });
     };
 
     const deleteCustomer = () => {
-      store.commit('deleteCustomer', formCustomer.id);
-      hide();
+      loading.value = true;
+      store.dispatch('removeCustomer', formCustomer.id).finally(() => {
+        loading.value = false;
+        hide();
+      });
     };
 
     const resetCustomer = () => {
