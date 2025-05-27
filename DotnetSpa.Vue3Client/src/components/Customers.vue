@@ -33,28 +33,28 @@
 </template>
 
 <script setup lang="ts">
-import EditCustomer from '@/components/EditCustomer.vue'
-import type CustomerModel from '@/models/customer'
+import EditCustomer from '@/components/edit-customer.vue'
+import { type Customer } from '@/models/customer'
 
 const props = defineProps<{
   loading: boolean
-  customers: CustomerModel[]
+  customers: Customer[]
   selectedCustomerId: number | undefined
 }>()
 
 const emit = defineEmits<{
-  (e: 'select', customer: CustomerModel): void
-  (e: 'update', customer: CustomerModel): void
+  (e: 'select', customer: Customer): void
+  (e: 'update', customer: Customer): void
   (e: 'delete', id: number): void
   (e: 'cancel'): void
 }>()
 
-const onCustomerSelect = (customer: CustomerModel) => {
+const onCustomerSelect = (customer: Customer) => {
   emit('select', customer)
 }
 
 
-const onCustomerUpdate = (customer: CustomerModel) => {
+const onCustomerUpdate = (customer: Customer) => {
   emit('update', customer)
 }
 

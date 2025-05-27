@@ -2,6 +2,20 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Web API",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/DotnetSpa.WebApi",
+      "runtimeExecutable": "dotnet",
+      "runtimeArgs": ["run", "--launch-profile", "https"],
+      "console": "integratedTerminal",
+      "serverReadyAction": {
+        "pattern": "Now listening on.+",
+        "uriFormat": "https://localhost:44314/scalar/",
+        "action": "openExternally"
+      }
+    },
+    {
       "name": "Vue 3 Client",
       "type": "node",
       "request": "launch",
@@ -16,16 +30,19 @@
       }
     },
     {
-      "name": "Web API",
+      "name": "React Client",
       "type": "node",
       "request": "launch",
-      "cwd": "${workspaceFolder}/DotnetSpa.WebApi",
-      "runtimeExecutable": "dotnet",
-      "runtimeArgs": ["run", "--launch-profile", "https"],
+      "cwd": "${workspaceFolder}/DotnetSpa.ReactClient",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
       "console": "integratedTerminal",
+      "env": {
+        "BROWSER": "none"
+      },
       "serverReadyAction": {
-        "pattern": "Now listening on.+",
-        "uriFormat": "https://localhost:44314/scalar/",
+        "pattern": "Local:.+(https?://\\S+)",
+        "uriFormat": "%s",
         "action": "openExternally"
       }
     }

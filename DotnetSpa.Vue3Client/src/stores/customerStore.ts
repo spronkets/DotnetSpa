@@ -2,14 +2,14 @@ import type { Commit } from 'vuex'
 import { createStore } from 'vuex'
 import axios from 'axios'
 import type { AxiosResponse } from 'axios'
-import CustomerModel from '@/models/customer'
-import OrderModel from '@/models/order'
-import MergeCustomerModel from '@/models/merge-customer'
+import { type Customer } from '@/models/customer'
+import { type Order } from '@/models/order'
+import { type MergeCustomer } from '@/models/merge-customer'
 
 interface State {
-  customers: CustomerModel[]
-  selectedCustomer?: CustomerModel
-  selectedCustomerOrders: OrderModel[]
+  customers: Customer[]
+  selectedCustomer?: Customer
+  selectedCustomerOrders: Order[]
 }
 
 const customerStore = createStore<State>({
@@ -19,7 +19,7 @@ const customerStore = createStore<State>({
     selectedCustomerOrders: [],
   }),
   mutations: {
-    selectCustomer(state: State, customer: CustomerModel): void {
+    selectCustomer(state: State, customer: Customer): void {
       if (!state.selectedCustomer || state.selectedCustomer.id !== customer.id) {
         state.selectedCustomer = customer
         state.selectedCustomerOrders = []
@@ -28,7 +28,7 @@ const customerStore = createStore<State>({
         state.selectedCustomerOrders = []
       }
     },
-    updateCustomer(state: State, customer: CustomerModel): void {
+    updateCustomer(state: State, customer: Customer): void {
       const customerIndex = state.customers.findIndex((c) => c.id === customer.id)
       if (customerIndex !== -1) {
         state.customers[customerIndex].firstName = customer.firstName
@@ -43,12 +43,12 @@ const customerStore = createStore<State>({
         state.customers.splice(customerIndex, 1)
       }
     },
-    setCustomers(state: State, customers: CustomerModel[]) {
+    setCustomers(state: State, customers: Customer[]) {
       state.customers = customers
       state.selectedCustomer = undefined
       state.selectedCustomerOrders = []
     },
-    setSelectedCustomerOrders(state: State, orders: OrderModel[]) {
+    setSelectedCustomerOrders(state: State, orders: Order[]) {
       state.selectedCustomerOrders = orders
     },
   },
@@ -72,8 +72,8 @@ const customerStore = createStore<State>({
         alert('Error loading customer orders.')
       }
     },
-    async saveCustomerChanges({ commit }: { commit: Commit }, customer: CustomerModel) {
-      const mergeCustomer: MergeCustomerModel = {
+    async saveCustomerChanges({ commit }: { commit: Commit }, customer: Customer) {
+      const mergeCustomer: MergeCustomer = {
         firstName: customer.firstName,
         lastName: customer.lastName,
       }

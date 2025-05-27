@@ -28,12 +28,12 @@
 </template>
 
 <script setup lang="ts">
-import type CustomerModel from '@/models/customer'
-import type OrderModel from '@/models/order'
+import { type Customer } from '@/models/customer'
+import { type Order } from '@/models/order'
 
 defineProps<{
-  customer: CustomerModel | undefined
-  orders: OrderModel[]
+  customer: Customer | undefined
+  orders: Order[]
   loading: boolean
   hasOrders: boolean
 }>()

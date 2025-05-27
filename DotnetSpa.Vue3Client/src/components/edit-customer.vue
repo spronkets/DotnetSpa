@@ -58,20 +58,20 @@
 
 <script setup lang="ts">
 import { ref, reactive } from 'vue'
-import type CustomerModel from '@/models/customer'
+import { type Customer } from '@/models/customer'
 
 const props = defineProps<{
-  customer: CustomerModel
+  customer: Customer
 }>()
 
 const emit = defineEmits<{
-  (e: 'update', updated: CustomerModel): void
+  (e: 'update', updated: Customer): void
   (e: 'delete', id: number): void
   (e: 'cancel'): void
 }>()
 
 const dialog = ref<HTMLDialogElement | null>(null)
-const formCustomer = reactive<CustomerModel>({ ...props.customer })
+const formCustomer = reactive<Customer>({ ...props.customer })
 const loading = ref(false)
 
 const show = () => {

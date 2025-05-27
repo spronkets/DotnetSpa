@@ -1,14 +1,14 @@
 import { ref, computed } from 'vue'
 import type { App } from 'vue'
 import axios from 'axios'
-import type CustomerModel from '@/models/customer'
-import type OrderModel from '@/models/order'
-import type MergeCustomerModel from '@/models/merge-customer'
+import { type Customer } from '@/models/customer'
+import { type Order } from '@/models/order'
+import { type MergeCustomer } from '@/models/merge-customer'
 
 // State
-const customers = ref<CustomerModel[]>([])
-const selectedCustomer = ref<CustomerModel | undefined>(undefined)
-const selectedCustomerOrders = ref<OrderModel[]>([])
+const customers = ref<Customer[]>([])
+const selectedCustomer = ref<Customer | undefined>(undefined)
+const selectedCustomerOrders = ref<Order[]>([])
 const loading = ref<boolean>(false)
 
 // Computed
@@ -17,7 +17,7 @@ const hasSelectedCustomer = computed(() => !!selectedCustomer.value)
 const hasOrders = computed(() => selectedCustomerOrders.value.length > 0)
 
 // Methods
-const selectCustomer = (customer: CustomerModel): void => {
+const selectCustomer = (customer: Customer): void => {
   if (!selectedCustomer.value || selectedCustomer.value.id !== customer.id) {
     selectedCustomer.value = customer
     selectedCustomerOrders.value = []
@@ -62,8 +62,8 @@ const refreshCustomerOrders = async (): Promise<void> => {
   }
 }
 
-const saveCustomerChanges = async (customer: CustomerModel): Promise<void> => {
-  const mergeCustomer: MergeCustomerModel = {
+const saveCustomerChanges = async (customer: Customer): Promise<void> => {
+  const mergeCustomer: MergeCustomer = {
     firstName: customer.firstName,
     lastName: customer.lastName,
   }

@@ -1,7 +1,5 @@
-export default class OrderModel {
-  constructor(
-    public id: number,
-    public customerId: number,
-    public totalPrice: number,
-  ) {}
+export type Order = {
+  id: number
+  customerId: number
+  totalPrice: number
 }

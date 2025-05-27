@@ -1,5 +1,7 @@
 <template>
   <div class="dashboard">
+    <h2>Vuex Dashboard</h2>
+
     <Customers
       :customers="customers"
       :loading="loading"
@@ -23,9 +25,9 @@
 <script setup lang="ts">
 import { computed, ref, onMounted } from 'vue'
 import { useStore } from 'vuex'
-import Customers from '@/components/Customers.vue'
-import CustomerOrders from '@/components/CustomerOrders.vue'
-import type CustomerModel from '@/models/customer'
+import Customers from '@/components/customers.vue'
+import CustomerOrders from '@/components/customer-orders.vue'
+import { type Customer } from '@/models/customer'
 
 const store = useStore()
 
@@ -46,14 +48,14 @@ onMounted(async () => {
 })
 
 // When a customer is selected
-const onCustomerSelect = async (customer: CustomerModel) => {
+const onCustomerSelect = async (customer: Customer) => {
   store.commit('selectCustomer', customer)
   ordersLoading.value = true
   await store.dispatch('refreshCustomerOrders')
   ordersLoading.value = false
 }
 
-const onCustomerUpdate = (customer: CustomerModel) => {
+const onCustomerUpdate = (customer: Customer) => {
   store.dispatch('saveCustomerChanges', customer)
 }
 
@@ -72,5 +74,9 @@ const onCustomerCancel = () => {
   flex-direction: column;
   gap: 1rem;
   padding: 1rem;
+
+  h2 {
+    margin: 0;
+  }
 }
 </style>

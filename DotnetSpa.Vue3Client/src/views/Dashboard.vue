@@ -1,5 +1,7 @@
 <template>
   <div class="dashboard">
+    <h2>Dashboard</h2>
+
     <Customers
       :customers="customers"
       :loading="loading"
@@ -21,10 +23,10 @@
 
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import Customers from '@/components/Customers.vue'
-import CustomerOrders from '@/components/CustomerOrders.vue'
+import Customers from '@/components/customers.vue'
+import CustomerOrders from '@/components/customer-orders.vue'
 import { useCustomerService } from '@/services/customerService'
-import type CustomerModel from '@/models/customer'
+import { type Customer } from '@/models/customer'
 
 const {
   customers,
@@ -43,11 +45,11 @@ onMounted(() => {
   refreshCustomers()
 })
 
-const onCustomerSelect = (customer: CustomerModel) => {
+const onCustomerSelect = (customer: Customer) => {
   selectCustomer(customer)
 }
 
-const onCustomerUpdate = (customer: CustomerModel) => {
+const onCustomerUpdate = (customer: Customer) => {
   saveCustomerChanges(customer)
 }
 
@@ -63,5 +65,9 @@ const onCustomerDelete = (customerId: number) => {
   flex-direction: column;
   gap: 1rem;
   padding: 1rem;
+
+  h2 {
+    margin: 0;
+  }
 }
 </style>
