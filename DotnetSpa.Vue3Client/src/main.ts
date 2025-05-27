@@ -1,12 +1,13 @@
-import { createApp } from 'vue';
-import App from './App.vue';
-import router from './router';
-import store from './store';
+import { createApp } from 'vue'
+import App from './App.vue'
+import router from './router'
+import customerStore from './stores/customerStore'
+import { customerServicePlugin } from './services/customerService'
 
-const app = createApp(App);
+const app = createApp(App)
 
-app.use(store);
+app.use(customerStore)
+app.use(customerServicePlugin)
+app.use(router)
 
-app.use(router);
-
-app.mount('#app');
+app.mount('#app')

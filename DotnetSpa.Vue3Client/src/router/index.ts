@@ -5,13 +5,17 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: () => import('@/views/Dashboard.vue')
+      redirect: '/dashboard',
     },
     {
       path: '/dashboard',
       name: 'dashboard',
-      component: () => import('@/views/Dashboard.vue')
+      component: () => import('@/views/Dashboard.vue'),
+    },
+    {
+      path: '/vuex-dashboard',
+      name: 'vuex-dashboard',
+      component: () => import('@/views/VuexDashboard.vue'),
     },
     {
       path: '/:pathMatch(.*)*',

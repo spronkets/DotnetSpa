@@ -1,0 +1,33 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Vue 3 Client",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/DotnetSpa.Vue3Client",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "console": "integratedTerminal",
+      "serverReadyAction": {
+        "pattern": "Local:.+(https?://\\S+)",
+        "uriFormat": "%s",
+        "action": "openExternally"
+      }
+    },
+    {
+      "name": "Web API",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/DotnetSpa.WebApi",
+      "runtimeExecutable": "dotnet",
+      "runtimeArgs": ["run", "--launch-profile", "https"],
+      "console": "integratedTerminal",
+      "serverReadyAction": {
+        "pattern": "Now listening on.+",
+        "uriFormat": "https://localhost:44314/scalar/",
+        "action": "openExternally"
+      }
+    }
+  ]
+}

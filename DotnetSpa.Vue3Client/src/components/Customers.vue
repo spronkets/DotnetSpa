@@ -1,7 +1,7 @@
 <template>
   <div class="customers">
     <p v-if="loading">Getting Customers...</p>
-    <table v-else-if="customers && customers.length > 0">
+    <table v-else-if="customers.length > 0">
       <caption>Customers</caption>
       <tr class="table-header">
         <td>Id</td>
@@ -9,11 +9,23 @@
         <td>Last Name</td>
         <td></td>
       </tr>
-      <tr v-for="customer in customers" :key="customer.id" @click="selectCustomer(customer)" :class="{ selected: isCustomerSelected(customer.id) }">
+      <tr
+        v-for="customer in customers"
+        :key="customer.id"
+        @click="() => onCustomerSelect(customer)"
+        :class="{ selected: customer.id === selectedCustomerId }"
+      >
         <td>{{ customer.id }}</td>
         <td>{{ customer.firstName }}</td>
         <td>{{ customer.lastName }}</td>
-        <td><EditCustomer :customer="customer" /></td>
+        <td>
+          <EditCustomer
+            :customer="customer"
+            @update="onCustomerUpdate"
+            @delete="onCustomerDelete"
+            @cancel="onCustomerCancel"
+          />
+        </td>
       </tr>
     </table>
     <p v-else>No Customers found.</p>
@@ -21,49 +33,48 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, ref, onMounted } from 'vue';
-  import { useStore } from 'vuex';
-  import CustomerModel from '@/models/customer';
-  import EditCustomer from '@/components/EditCustomer.vue';
+import EditCustomer from '@/components/EditCustomer.vue'
+import type CustomerModel from '@/models/customer'
 
-  const store = useStore();
+const props = defineProps<{
+  loading: boolean
+  customers: CustomerModel[]
+  selectedCustomerId: number | undefined
+}>()
 
-  const loading = ref(false);
+const emit = defineEmits<{
+  (e: 'select', customer: CustomerModel): void
+  (e: 'update', customer: CustomerModel): void
+  (e: 'delete', id: number): void
+  (e: 'cancel'): void
+}>()
 
-  const customers = computed(() => store.state.customers);
-  const selectedCustomer = computed(() => store.state.selectedCustomer);
-  const hasCustomers = computed(() => customers.value && customers.value.length > 0);
+const onCustomerSelect = (customer: CustomerModel) => {
+  emit('select', customer)
+}
 
-  onMounted(() => {
-    if (!hasCustomers.value) {
-      refreshCustomers();
-    }
-  });
 
-  function refreshCustomers(): void {
-    loading.value = true;
-    store.dispatch('refreshCustomers').finally(() => {
-      loading.value = false;
-    });
-  }
+const onCustomerUpdate = (customer: CustomerModel) => {
+  emit('update', customer)
+}
 
-  function selectCustomer(customer: CustomerModel): void {
-    store.commit('selectCustomer', customer);
-  }
+const onCustomerDelete = (id: number) => {
+  emit('delete', id)
+}
 
-  function isCustomerSelected(customerId: number): boolean {
-    return selectedCustomer.value?.id === customerId;
-  }
+const onCustomerCancel = () => {
+  emit('cancel')
+}
 </script>
 
 <style lang="scss" scoped>
-  @import '@/assets/styles/common';
+@import '@/assets/styles/common';
 
-  tr:not(:first-child) {
-    cursor: pointer;
+tr:not(:first-child) {
+  cursor: pointer;
 
-    &.selected {
-      background-color: $highlighterColor;
-    }
+  &.selected {
+    background-color: $highlighterColor;
   }
+}
 </style>

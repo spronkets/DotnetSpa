@@ -4,7 +4,10 @@
 *.user
 
 # IDE - VS Code
-.vscode/
+.vscode/*
+!.vscode/launch.json
+!.vscode/tasks.json
+!.vscode/settings.json
 
 # IDE - WebStorm
 .idea/
@@ -16,6 +19,7 @@ dist/
 out-tsc/
 node_modules/
 package-lock.json
+pnpm-lock.yaml
 
 # System Files
 .DS_Store

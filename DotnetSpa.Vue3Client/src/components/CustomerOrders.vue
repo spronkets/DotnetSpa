@@ -1,8 +1,15 @@
 <template>
-  <div class="customer-orders">
+  <div v-if="customer" class="customer-orders">
     <p v-if="loading">Getting Orders for Customer...</p>
     <table v-else-if="hasOrders">
-      <caption>{{ customer.firstName }} {{ customer.lastName }}'s Orders</caption>
+      <caption>
+        {{
+          customer.firstName
+        }}
+        {{
+          customer.lastName
+        }}'s Orders
+      </caption>
       <thead>
         <tr class="table-header">
           <td>Id</td>
@@ -12,7 +19,7 @@
       <tbody>
         <tr v-for="order in orders" :key="order.id">
           <td>{{ order.id }}</td>
-          <td>{{ order.totalPrice }}</td>
+          <td>{{ formatCurrency(order.totalPrice) }}</td>
         </tr>
       </tbody>
     </table>
@@ -21,31 +28,26 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, ref, onMounted } from 'vue';
-  import { useStore } from 'vuex';
+import type CustomerModel from '@/models/customer'
+import type OrderModel from '@/models/order'
 
-  const store = useStore();
+defineProps<{
+  customer: CustomerModel | undefined
+  orders: OrderModel[]
+  loading: boolean
+  hasOrders: boolean
+}>()
 
-  const loading = ref(false);
+const formatCurrency = (value: number) => {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 2,
+  }).format(value)
+}
 
-  const customer = computed(() => store.state.selectedCustomer);
-  const orders = computed(() => store.state.selectedCustomerOrders);
-  const hasOrders = computed(() => orders.value && orders.value.length > 0);
-
-  onMounted(() => {
-    if (!hasOrders.value) {
-      refreshOrders();
-    }
-  });
-
-  function refreshOrders(): void {
-    loading.value = true;
-    store.dispatch('refreshCustomerOrders').finally(() => {
-      loading.value = false;
-    });
-  }
 </script>
 
 <style lang="scss" scoped>
-  @import '@/assets/styles/common';
+@import '@/assets/styles/common';
 </style>

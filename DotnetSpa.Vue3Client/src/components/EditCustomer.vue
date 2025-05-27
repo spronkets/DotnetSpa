@@ -1,248 +1,195 @@
 <template>
-  <div class="edit-customer">
-    <button @click.stop="show"><i class="fas fa-user-edit"></i></button>
-    <div class="backdrop" @click.stop="hide" v-show="showDialog">
-      <div class="dialog" @click.stop="" v-show="showDialog">
-        <div class="dialog-header">
-          <div class="left">
-            <div class="center-container">
-              <strong>Edit Customer</strong>
-            </div>
-          </div>
-          <div class="right">
-            <div class="center-container">
-              <a v-if="!loading" @click.stop="hide"><i class="fas fa-times"></i></a>
-            </div>
-          </div>
+  <button @click.stop="show"><i class="fas fa-user-edit"></i></button>
+  <dialog
+    ref="dialog"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="dialog-title"
+    @cancel.stop="onCancel"
+    @close.stop="onClose"
+    @mousedown.stop="hide"
+    @click.stop
+  >
+    <form method="dialog" @submit.prevent="onSave" @mousedown.stop>
+      <header>
+        <h3 id="dialog-title">Edit Customer</h3>
+        <button type="button" @click.stop="hide" :disabled="loading" class="close-button">
+          <i class="fas fa-times"></i>
+        </button>
+      </header>
+
+      <div class="form-content">
+        <div class="form-group">
+          <label for="firstName">First Name</label>
+          <input
+            id="firstName"
+            v-model.trim="formCustomer.firstName"
+            placeholder="First Name"
+            :disabled="loading"
+            required
+          />
         </div>
-        <div class="dialog-body">
-          <form @submit.prevent="saveChanges">
-            <input v-model.trim="formCustomer.firstName" placeholder="First Name" title="First Name" :disabled="loading">
-            <input v-model.trim="formCustomer.lastName" placeholder="Last Name" title="Last Name" :disabled="loading">
-          </form>
-        </div>
-        <div class="dialog-footer">
-          <div class="left">
-            <div class="center-container">
-              <button class="delete-button" @click="deleteCustomer" :disabled="loading">Delete</button>
-            </div>
-          </div>
-          <div class="right">
-            <div class="center-container">
-              <button class="save-button" @click="saveChanges" :disabled="loading">Save</button>
-              <button class="cancel-button" @click="hide" :disabled="loading">Cancel</button>
-            </div>
-          </div>
+        <div class="form-group">
+          <label for="lastName">Last Name</label>
+          <input
+            id="lastName"
+            v-model.trim="formCustomer.lastName"
+            placeholder="Last Name"
+            :disabled="loading"
+            required
+          />
         </div>
       </div>
-    </div>
-  </div>
+
+      <footer>
+        <button type="button" class="delete-button" @click="onDelete" :disabled="loading">
+          Delete
+        </button>
+        <div class="action-buttons">
+          <button type="submit" class="save-button" :disabled="loading">Save</button>
+          <button type="button" class="cancel-button" @click.stop="hide" :disabled="loading">
+            Cancel
+          </button>
+        </div>
+      </footer>
+    </form>
+  </dialog>
 </template>
 
-<script lang="ts">
-  import { defineComponent, reactive, ref, toRefs } from 'vue';
-  import { useStore } from 'vuex';
-  import CustomerModel from '@/models/customer';
+<script setup lang="ts">
+import { ref, reactive } from 'vue'
+import type CustomerModel from '@/models/customer'
 
-  export default defineComponent({
-    props: {
-      customer: {
-        type: Object as () => CustomerModel,
-        required: true,
-      },
-    },
-    setup(props) {
-      const store = useStore();
-      const formCustomer = reactive<CustomerModel>({});
-      const showDialog = ref(false);
+const props = defineProps<{
+  customer: CustomerModel
+}>()
 
-      const loading = ref(false);
+const emit = defineEmits<{
+  (e: 'update', updated: CustomerModel): void
+  (e: 'delete', id: number): void
+  (e: 'cancel'): void
+}>()
 
-      const show = () => {
-        resetCustomer();
-        showDialog.value = true;
-      };
+const dialog = ref<HTMLDialogElement | null>(null)
+const formCustomer = reactive<CustomerModel>({ ...props.customer })
+const loading = ref(false)
 
-      const hide = () => {
-        if (loading.value) {
-          return;
-        }
-        showDialog.value = false;
-      };
+const show = () => {
+  Object.assign(formCustomer, props.customer)
+  dialog.value?.showModal()
+}
 
-      const saveChanges = () => {
-        loading.value = true;
-        store.dispatch('saveCustomerChanges', formCustomer).finally(() => {
-          loading.value = false;
-          hide();
-        });
-      };
+const hide = () => {
+  if (loading.value) return
+  dialog.value?.close()
+  emit('cancel')
+}
 
-      const deleteCustomer = () => {
-        loading.value = true;
-        store.dispatch('removeCustomer', formCustomer.id).finally(() => {
-          loading.value = false;
-          hide();
-        });
-      };
+const onSave = async () => {
+  loading.value = true
+  try {
+    emit('update', { ...formCustomer })
+    hide()
+  } finally {
+    loading.value = false
+  }
+}
 
-      const resetCustomer = () => {
-        Object.assign(formCustomer, props.customer || <CustomerModel>{});
-      };
+const onDelete = async () => {
+  loading.value = true
+  try {
+    emit('delete', formCustomer.id)
+    hide()
+  } finally {
+    loading.value = false
+  }
+}
 
-      return {
-        ...toRefs({ showDialog, formCustomer }),
-        loading,
-        show,
-        hide,
-        saveChanges,
-        deleteCustomer,
-        resetCustomer,
-      };
-    },
-  });
+const onCancel = (event: Event) => {
+  event.preventDefault()
+  hide()
+}
+
+const onClose = () => {
+  emit('cancel')
+}
 </script>
 
 <style lang="scss" scoped>
   @import '@/assets/styles/common';
 
-  .backdrop {
-    position: fixed;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
+  dialog {
     padding: 1rem;
-    z-index: 100;
-    background: rgba(black, 0.4);
-    cursor: default;
-  }
+    border: none;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 
-  .dialog {
-    display: grid;
-    grid-template-areas:
-      "dialog-header" "dialog-body" "dialog-footer";
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr auto;
-    background-color: $tertiaryColor;
-    @include dynamic-font-color($tertiaryColor);
-    min-height: 8rem;
-    min-width: 16rem;
-    max-height: calc(100% - 2rem);
-    max-width: calc(100% - 2rem);
-
-    &.full-size {
-      height: calc(100% - 2rem);
-      width: calc(100% - 2rem);
-    }
-
-    @include center();
-
-    .dialog-header {
-      position: relative;
-      grid-area: dialog-header;
-      display: grid;
-      grid-template-areas: "left right";
-      grid-template-columns: 1fr auto;
-      grid-template-rows: 2rem;
-      font-size: $headerFontSize;
-      @include dynamic-font-color($tertiaryColor);
-
-      .left {
-        position: relative;
-        grid-area: left;
-        padding: 0 1.25rem;
-      }
-
-      .right {
-        position: relative;
-        grid-area: right;
-        padding-right: 1.25rem;
-      }
-
-      .center-container {
-        @include center-vertically();
-      }
-
-      span, a, button {
-        display: inline-block;
-      }
-
-      a, button {
-        cursor: pointer;
-      }
-    }
-
-    .dialog-body {
-      position: relative;
-      grid-area: dialog-body;
-      padding: 1rem 2rem;
-
-      form {
-        input {
-          display: block;
-
-          &:not(:first-child) {
-            margin-top: 1rem;
-          }
-        }
-      }
-    }
-
-    .dialog-footer {
-      position: relative;
-      grid-area: dialog-footer;
-      display: grid;
-      grid-template-areas: "left right";
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 2rem;
-      font-size: $footerFontSize;
-
-      .left {
-        position: relative;
-        grid-area: left;
-        padding: 0 1.25rem;
-      }
-
-      .right {
-        position: relative;
-        grid-area: right;
-        padding-right: 1.25rem;
-      }
-
-      .center-container {
-        @include center-vertically();
-      }
-
-      span, a, button {
-        display: inline-block;
-      }
-
-      a, button {
-        cursor: pointer;
-      }
-
-      .delete-button {
-        background-color: red;
-      }
-
-      .save-button {
-        background-color: green;
-      }
-
-      .cancel-button {
-        background-color: yellow;
-      }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      min-height: 8rem;
+      min-width: 16rem;
+      max-height: calc(100% - 2rem);
+      max-width: calc(100% - 2rem);
+      cursor: default;
+      user-select: none;
 
       button {
         border: none;
         text-align: center;
         text-decoration: none;
         color: black;
+        padding: 0.5rem;
+        cursor: pointer;
+      }
 
-        &:disabled {
-          background-color: lightgray;
-          cursor: not-allowed;
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        h3 {
+          margin: 0;
+        }
+
+        button {
+          background-color: transparent;
+        }
+      }
+
+      .form-content {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        .form-group {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+        }
+      }
+
+      footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem;
+
+        .delete-button {
+          background-color: red;
+        }
+
+        .action-buttons {
+          display: flex;
+          gap: 0.5rem;
+        }
+
+        .save-button {
+          background-color: green;
+        }
+
+        .cancel-button {
+          background-color: yellow;
         }
       }
     }
