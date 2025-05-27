@@ -34,7 +34,7 @@
 
 <script setup lang="ts">
 import EditCustomer from '@/components/edit-customer.vue'
-import { type Customer } from '@/models/customer'
+import type { Customer } from '@/models/customer'
 
 const props = defineProps<{
   loading: boolean

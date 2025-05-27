@@ -1,9 +1,9 @@
 import { ref, computed } from 'vue'
 import type { App } from 'vue'
 import axios from 'axios'
-import { type Customer } from '@/models/customer'
-import { type Order } from '@/models/order'
-import { type MergeCustomer } from '@/models/merge-customer'
+import type { Customer } from '@/models/customer'
+import type { Order } from '@/models/order'
+import type { MergeCustomer } from '@/models/merge-customer'
 
 // State
 const customers = ref<Customer[]>([])

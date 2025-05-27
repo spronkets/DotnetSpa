@@ -26,7 +26,7 @@ import { onMounted } from 'vue'
 import Customers from '@/components/customers.vue'
 import CustomerOrders from '@/components/customer-orders.vue'
 import { useCustomerService } from '@/services/customer-service'
-import { type Customer } from '@/models/customer'
+import type { Customer } from '@/models/customer'
 
 const {
   customers,

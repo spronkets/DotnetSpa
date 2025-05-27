@@ -28,8 +28,8 @@
 </template>
 
 <script setup lang="ts">
-import { type Customer } from '@/models/customer'
-import { type Order } from '@/models/order'
+import type { Customer } from '@/models/customer'
+import type { Order } from '@/models/order'
 
 defineProps<{
   customer: Customer | undefined

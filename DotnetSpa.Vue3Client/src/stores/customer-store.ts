@@ -2,9 +2,9 @@ import type { Commit } from 'vuex'
 import { createStore } from 'vuex'
 import axios from 'axios'
 import type { AxiosResponse } from 'axios'
-import { type Customer } from '@/models/customer'
-import { type Order } from '@/models/order'
-import { type MergeCustomer } from '@/models/merge-customer'
+import type { Customer } from '@/models/customer'
+import type { Order } from '@/models/order'
+import type { MergeCustomer } from '@/models/merge-customer'
 
 interface State {
   customers: Customer[]

@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
-import { type Customer, type MergeCustomer } from "../models";
+import type { Customer, MergeCustomer } from "../models";
 
 @Injectable({
   providedIn: "root",

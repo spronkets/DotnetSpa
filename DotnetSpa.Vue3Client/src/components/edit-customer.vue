@@ -58,7 +58,7 @@
 
 <script setup lang="ts">
 import { ref, reactive } from 'vue'
-import { type Customer } from '@/models/customer'
+import type { Customer } from '@/models/customer'
 
 const props = defineProps<{
   customer: Customer

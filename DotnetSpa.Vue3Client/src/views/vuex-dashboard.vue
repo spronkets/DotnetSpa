@@ -26,7 +26,7 @@ import { computed, ref, onMounted } from 'vue'
 import { useStore } from 'vuex'
 import Customers from '@/components/customers.vue'
 import CustomerOrders from '@/components/customer-orders.vue'
-import { type Customer } from '@/models/customer'
+import type { Customer } from '@/models/customer'
 
 const store = useStore()
 
