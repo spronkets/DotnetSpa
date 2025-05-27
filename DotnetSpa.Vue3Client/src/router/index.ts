@@ -10,17 +10,17 @@ const router = createRouter({
     {
       path: '/dashboard',
       name: 'dashboard',
-      component: () => import('@/views/Dashboard.vue'),
+      component: () => import('@/views/dashboard.vue'),
     },
     {
       path: '/vuex-dashboard',
       name: 'vuex-dashboard',
-      component: () => import('@/views/VuexDashboard.vue'),
+      component: () => import('@/views/vuex-dashboard.vue'),
     },
     {
       path: '/:pathMatch(.*)*',
       name: 'not-found',
-      component: () => import('../views/NotFound.vue'),
+      component: () => import('../views/not-found.vue'),
     },
   ],
 })

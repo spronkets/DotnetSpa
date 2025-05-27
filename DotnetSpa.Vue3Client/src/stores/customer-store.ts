@@ -31,10 +31,13 @@ const customerStore = createStore<State>({
     updateCustomer(state: State, customer: Customer): void {
       const customerIndex = state.customers.findIndex((c) => c.id === customer.id)
       if (customerIndex !== -1) {
-        state.customers[customerIndex].firstName = customer.firstName
-        state.customers[customerIndex].lastName = customer.lastName
+        state.customers.splice(customerIndex, 1, customer)
       } else {
         state.customers.push(customer)
+      }
+
+      if (state.selectedCustomer && state.selectedCustomer.id === customer.id) {
+        state.selectedCustomer = customer
       }
     },
     deleteCustomer(state: State, customerId: number): void {

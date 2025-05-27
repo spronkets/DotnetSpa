@@ -9,7 +9,6 @@
       @select="onCustomerSelect"
       @update="onCustomerUpdate"
       @delete="onCustomerDelete"
-      @cancel="onCustomerCancel"
     />
 
     <CustomerOrders
@@ -47,7 +46,6 @@ onMounted(async () => {
   loading.value = false
 })
 
-// When a customer is selected
 const onCustomerSelect = async (customer: Customer) => {
   store.commit('selectCustomer', customer)
   ordersLoading.value = true
@@ -55,16 +53,12 @@ const onCustomerSelect = async (customer: Customer) => {
   ordersLoading.value = false
 }
 
-const onCustomerUpdate = (customer: Customer) => {
-  store.dispatch('saveCustomerChanges', customer)
+const onCustomerUpdate = async (customer: Customer) => {
+  await store.dispatch('saveCustomerChanges', customer)
 }
 
-const onCustomerDelete = (id: number) => {
-  store.dispatch('removeCustomer', id)
-}
-
-const onCustomerCancel = () => {
-  // No operation needed for now
+const onCustomerDelete = async (id: number) => {
+  await store.dispatch('removeCustomer', id)
 }
 </script>
 

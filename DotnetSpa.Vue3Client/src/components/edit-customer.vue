@@ -89,8 +89,9 @@ const onSave = async () => {
   loading.value = true
   try {
     emit('update', { ...formCustomer })
+    loading.value = false
     hide()
-  } finally {
+  } catch {
     loading.value = false
   }
 }
@@ -99,8 +100,9 @@ const onDelete = async () => {
   loading.value = true
   try {
     emit('delete', formCustomer.id)
+    loading.value = false
     hide()
-  } finally {
+  } catch {
     loading.value = false
   }
 }
