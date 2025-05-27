@@ -1,0 +1,17 @@
+@import '../styles/common';
+
+.customers {
+  width: 100%;
+}
+
+.tableHeader {
+  font-weight: bold;
+}
+
+tbody tr {
+  cursor: pointer;
+}
+
+.selected {
+  background-color: $highlighterColor;
+}

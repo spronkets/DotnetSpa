@@ -3,6 +3,8 @@
     <div class="site-name">
       <router-link to="/">DotnetSpa</router-link>
     </div>
+    <div class="left"></div>
+    <div class="right"></div>
   </header>
 
   <nav>
