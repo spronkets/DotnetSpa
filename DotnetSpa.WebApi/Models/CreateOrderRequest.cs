@@ -1,7 +1,6 @@
-namespace DotnetSpa.WebApi.Models
+namespace DotnetSpa.WebApi.Models;
+
+public class CreateOrderRequest
 {
-    public class CreateOrderRequest
-    {
-        public decimal TotalPrice { get; set; }
-    }
+    public decimal TotalPrice { get; set; }
 }

@@ -1,0 +1,10 @@
+@import '../../../../assets/styles/common';
+
+tr {
+  cursor: pointer;
+  user-select: none;
+
+  &.selected {
+    background-color: $highlighterColor;
+  }
+}

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29209.62
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35818.85
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{58A356BC-4D56-4891-8D6A-48DD25438B66}"
 	ProjectSection(SolutionItems) = preProject
@@ -9,13 +9,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 		.gitignore = .gitignore
 		docker-compose.yml = docker-compose.yml
+		LICENSE = LICENSE
+		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotnetSpa.WebApi", "DotnetSpa.WebApi\DotnetSpa.WebApi.csproj", "{FE04333B-BC2B-457F-92A3-2C96D07D880D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotnetSpa.WebApi", "DotnetSpa.WebApi\DotnetSpa.WebApi.csproj", "{137A308F-83C0-47E8-8092-3ABE98DEBF9B}"
 EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "DotnetSpa.AngularClient", "DotnetSpa.AngularClient\", "{F5B2E76F-34EB-46DB-B8A6-540B495FEB2C}"
 	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.8"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_3542"
 		Debug.AspNetCompiler.PhysicalPath = "DotnetSpa.AngularClient\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_3542\"
@@ -34,25 +36,67 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "DotnetSpa.AngularClient", "
 		SlnRelativePath = "DotnetSpa.AngularClient\"
 	EndProjectSection
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "DotnetSpa.VueClient", "DotnetSpa.VueClient\", "{3721DE01-F1AF-4065-BB99-67973CCAB49C}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "DotnetSpa.ReactClient", "DotnetSpa.ReactClient\", "{EFE38E2C-0C5B-FA73-CDD5-1AD7551BDE86}"
 	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
-		Debug.AspNetCompiler.VirtualPath = "/localhost_3038"
-		Debug.AspNetCompiler.PhysicalPath = "DotnetSpa.VueClient\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_3038\"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.8"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_62305"
+		Debug.AspNetCompiler.PhysicalPath = "DotnetSpa.ReactClient\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_62305\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_3038"
-		Release.AspNetCompiler.PhysicalPath = "DotnetSpa.VueClient\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_3038\"
+		Release.AspNetCompiler.VirtualPath = "/localhost_62305"
+		Release.AspNetCompiler.PhysicalPath = "DotnetSpa.ReactClient\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_62305\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "3038"
-		SlnRelativePath = "DotnetSpa.VueClient\"
+		VWDPort = "62305"
+		SlnRelativePath = "DotnetSpa.ReactClient\"
+	EndProjectSection
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "DotnetSpa.SvelteClient", "DotnetSpa.SvelteClient\", "{1DDA03C3-792C-37B9-7F1D-2BF2BB39706E}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.8"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_62320"
+		Debug.AspNetCompiler.PhysicalPath = "DotnetSpa.SvelteClient\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_62320\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_62320"
+		Release.AspNetCompiler.PhysicalPath = "DotnetSpa.SvelteClient\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_62320\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "62320"
+		SlnRelativePath = "DotnetSpa.SvelteClient\"
+	EndProjectSection
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "DotnetSpa.Vue3Client", "DotnetSpa.Vue3Client\", "{D0F97A5B-1410-4D69-8536-7FCBC57A0741}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.8"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_62283"
+		Debug.AspNetCompiler.PhysicalPath = "DotnetSpa.Vue3Client\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_62283\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_62283"
+		Release.AspNetCompiler.PhysicalPath = "DotnetSpa.Vue3Client\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_62283\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "62283"
+		SlnRelativePath = "DotnetSpa.Vue3Client\"
 	EndProjectSection
 EndProject
 Global
@@ -61,14 +105,26 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FE04333B-BC2B-457F-92A3-2C96D07D880D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FE04333B-BC2B-457F-92A3-2C96D07D880D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{137A308F-83C0-47E8-8092-3ABE98DEBF9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{137A308F-83C0-47E8-8092-3ABE98DEBF9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{137A308F-83C0-47E8-8092-3ABE98DEBF9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{137A308F-83C0-47E8-8092-3ABE98DEBF9B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F5B2E76F-34EB-46DB-B8A6-540B495FEB2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F5B2E76F-34EB-46DB-B8A6-540B495FEB2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5B2E76F-34EB-46DB-B8A6-540B495FEB2C}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{F5B2E76F-34EB-46DB-B8A6-540B495FEB2C}.Release|Any CPU.Build.0 = Debug|Any CPU
-		{3721DE01-F1AF-4065-BB99-67973CCAB49C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3721DE01-F1AF-4065-BB99-67973CCAB49C}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFE38E2C-0C5B-FA73-CDD5-1AD7551BDE86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFE38E2C-0C5B-FA73-CDD5-1AD7551BDE86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFE38E2C-0C5B-FA73-CDD5-1AD7551BDE86}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFE38E2C-0C5B-FA73-CDD5-1AD7551BDE86}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{1DDA03C3-792C-37B9-7F1D-2BF2BB39706E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DDA03C3-792C-37B9-7F1D-2BF2BB39706E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DDA03C3-792C-37B9-7F1D-2BF2BB39706E}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DDA03C3-792C-37B9-7F1D-2BF2BB39706E}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{D0F97A5B-1410-4D69-8536-7FCBC57A0741}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0F97A5B-1410-4D69-8536-7FCBC57A0741}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0F97A5B-1410-4D69-8536-7FCBC57A0741}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0F97A5B-1410-4D69-8536-7FCBC57A0741}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

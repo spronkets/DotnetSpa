@@ -1,14 +1,17 @@
-<p *ngIf="loadingCustomers; else customersLoaded">
-  Getting Customers...
+<p *ngIf="customers$ | async as customers; else loadingCustomers">
+  <customers [customers]="customers" (selected)="customerSelected($event)"></customers>
 </p>
-<ng-template #customersLoaded>
-  <customer-list [customers]="customers" (selected)="customerSelected($event)"></customer-list>
-  <ng-template [ngIf]="shouldShowCustomerOrders">
-    <p *ngIf="loadingCustomerOrders; else customerOrdersLoaded">
-      Getting Orders for Customer...
-    </p>
-    <ng-template #customerOrdersLoaded>
-      <order-list [orders]="customerOrders"></order-list>
-    </ng-template>
-  </ng-template>
+
+<ng-template #loadingCustomers>
+  <p>Getting Customers...</p>
+</ng-template>
+
+<ng-container *ngIf="customerId">
+  <p *ngIf="customerOrders$ | async as orders; else loadingOrders">
+    <customer-orders [orders]="orders"></customer-orders>
+  </p>
+</ng-container>
+
+<ng-template #loadingOrders>
+  <p>Getting Orders for Customer...</p>
 </ng-template>

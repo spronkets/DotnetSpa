@@ -1,4 +1,4 @@
-@import 'src/assets/styles/common';
+@import 'common';
 
 $navWidth: 14rem;
 
@@ -75,14 +75,14 @@ nav {
   @include dynamic-font-color($secondaryColor);
 
   a {
-      text-decoration: none;
-      @include dynamic-font-color($secondaryColor);
+    text-decoration: none;
+    @include dynamic-font-color($secondaryColor);
   }
 
   ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
   }
 }
 

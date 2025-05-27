@@ -1,2 +1,2 @@
-export { CustomerListComponent } from './customer-list/customer-list.component';
-export { OrderListComponent } from './order-list/order-list.component';
+export { CustomersComponent } from './customers/customers.component';
+export { CustomerOrdersComponent } from './customer-orders/customer-orders.component';

@@ -6,7 +6,7 @@ services:
     build:
       context: .
       dockerfile: DotnetSpa.WebApi/Dockerfile
-    image: kcrossman/dotnetspa-webapi
+    image: dotnetspa/webapi
     networks:
       dotnetspa:
         ipv4_address: 172.42.2.1
@@ -21,21 +21,21 @@ services:
     build:
       context: .
       dockerfile: DotnetSpa.AngularClient/Dockerfile
-    image: kcrossman/dotnetspa-angularclient
+    image: dotnetspa/angularclient
     networks:
       dotnetspa:
         ipv4_address: 172.42.1.2
     ports:
       - '4200:4200'
-  vueclient:
-    container_name: dotnetspa-vueclient
+  vue3client:
+    container_name: dotnetspa-vue3client
     restart: always
     depends_on:
       - webapi
     build:
       context: .
-      dockerfile: DotnetSpa.VueClient/Dockerfile
-    image: kcrossman/dotnetspa-vueclient
+      dockerfile: DotnetSpa.Vue3Client/Dockerfile
+    image: dotnetspa/vue3client
     networks:
       dotnetspa:
         ipv4_address: 172.42.1.3
